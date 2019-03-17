@@ -1,4 +1,5 @@
 import java.awt.FlowLayout;
+import java.util.Arrays;
 
 import javax.swing.*;
 public class GUI {
@@ -8,12 +9,13 @@ public class GUI {
 		JFrame f=new JFrame("MY app");
 		int[] dates;
 		dates=new int[31];
-		for(int i=1;i<=31;++i)
+		String[] str=new String[31];
+		for(int i=0;i<31;++i)
 		{
-			dates[i]=i;
+			dates[i]=i+1;
+			str[i]=String.valueOf(dates[i]);
 		}
-		JComboBox<Integer> cb=new JComboBox<Integer>();
-		cb.setModel(dates));
+		JComboBox cb=new JComboBox(str);
 		cb.setBounds(50,50,90,20);
 		f.setLayout(new FlowLayout());
 		f.add(cb);
