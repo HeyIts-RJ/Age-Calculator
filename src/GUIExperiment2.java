@@ -6,8 +6,7 @@ import java.util.*;
 import java.time.*;
 public class GUIExperiment2 implements ActionListener{
 		static	JComboBox cb1,cb2,cb3;
-		static String dobYString,truevalString,falsevalString ;
-		static int trueval=0,falseval=0;
+		static String dobYString;
 		static int dobY;
 		static String str2[]={"Jan","Feb","Mar","Apr","May","June","Jul","Aug","Sep","Oct","Nov","Dec"};
 		static String str1[];
@@ -49,23 +48,9 @@ public class GUIExperiment2 implements ActionListener{
 		cb3=new JComboBox(str3);
 		cb3.setBounds(350,50,90,20);
 		
-		String dobYString = (String)cb1.getSelectedItem();
-		dobY=Integer.parseInt(dobYString);
+		/* dobYString = (String)cb1.getSelectedItem();
+		dobY=Integer.parseInt(dobYString); */
 		
-		
-		//System.out.println(Year.isLeap(dobY));
-		if(Year.isLeap(dobY)==true)
-		{
-			trueval=1;
-			//String truevalString=Boolean.toString(trueval);
-		}
-	/* 	else
-		{
-			//falseval=Year.isLeap(dobY);
-			//String falsevalString=Boolean.toString(falseval);
-		}  */
-		 System.out.println(falsevalString);
-		System.out.println(truevalString);
 		f.setLayout(new FlowLayout());
 		f.add(cb1);
 		f.add(cb2);
@@ -79,14 +64,9 @@ public class GUIExperiment2 implements ActionListener{
 	// Item state changed
 	// cb3 dates
 	 public void actionPerformed(ActionEvent e) 
-    { 	
-		/*
-		static final DefaultComboBoxModel termModel1 = new DefaultComboBoxModel(new String[]{"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"});
-		static final DefaultComboBoxModel termModel2A = new DefaultComboBoxModel(new String[]{"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29"});
-		static final DefaultComboBoxModel termModel2B = new DefaultComboBoxModel(new String[]{"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"});
-		static final DefaultComboBoxModel termModel3 = new DefaultComboBoxModel(new String[]{"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"}); */
-		
-		/**************************************************/
+    { 
+		dobYString = (String)cb1.getSelectedItem();
+		dobY=Integer.parseInt(dobYString);
 		if (cb2.getSelectedItem().equals(str2[0]) || cb2.getSelectedItem().equals(str2[2]) || cb2.getSelectedItem().equals(str2[4]) || cb2.getSelectedItem().equals(str2[6]) || cb2.getSelectedItem().equals(str2[7]) || cb2.getSelectedItem().equals(str2[9]) || cb2.getSelectedItem().equals(str2[11]))
 		{
 			cb3.setModel(termModel1);    
@@ -96,16 +76,19 @@ public class GUIExperiment2 implements ActionListener{
 		if (cb2.getSelectedItem().equals(str2[1]))
 		{
 			System.out.println("Checking month of feb");
-			if(trueval==1)
+			if(Year.isLeap(dobY))
 			{
 				cb3.setModel(termModel2A); 
 				System.out.println("im in 29 days leap years");
+				System.out.println(dobY);
+				System.out.println(dobYString);
 			}
-			if(trueval==0)
+			else
 			{
 				cb3.setModel(termModel2B);
 				System.out.println("Im in 28 days feb");
 				System.out.println(dobY);
+				System.out.println(dobYString);
 			}
 		}
 	
